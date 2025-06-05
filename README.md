@@ -1,27 +1,24 @@
 # ChecklistGenerator
 
-A simple Flask web application to create and manage configurable checklists.
+A simple Blazor WebAssembly application to create and manage configurable checklists. All data is stored in the browser's local storage.
 
 ## Setup
 
-Install dependencies with pip:
+You need the [.NET SDK](https://dotnet.microsoft.com/download) to run the app.
+
+Restore dependencies and start the development server:
 
 ```bash
-pip install -r requirements.txt
+dotnet restore
+dotnet run
 ```
 
-Run the application:
-
-```bash
-python app/app.py
-```
-
-The server will start on `http://127.0.0.1:5000/`.
+The application will be available at `https://localhost:5001/` by default.
 
 ## Features
 
-- Create new checklists with any number of items.
-- View and update existing checklists.
-- Delete checklists.
+- Create new checklists with any number of items
+- View and update existing checklists
+- Delete checklists
 
-Checklists are stored in a local SQLite database `checklists.db`.
+All data is persisted locally in your browser so no server setup is required.

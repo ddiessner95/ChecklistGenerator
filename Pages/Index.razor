@@ -1,0 +1,34 @@
+@page "/"
+@inject ChecklistService Checklists
+
+<h1>Checklists</h1>
+<a href="/new">Create New</a>
+
+@if (Checklists.Lists.Count == 0)
+{
+    <p>No checklists yet.</p>
+}
+else
+{
+    <ul>
+    @foreach (var cl in Checklists.Lists)
+    {
+        <li>
+            <a href="/view/@cl.Id">@cl.Name</a>
+            <button @onclick="() => Delete(cl)">Delete</button>
+        </li>
+    }
+    </ul>
+}
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await Checklists.LoadAsync();
+    }
+
+    private async Task Delete(Checklist cl)
+    {
+        await Checklists.DeleteChecklist(cl);
+    }
+}

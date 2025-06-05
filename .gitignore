@@ -1,3 +1,11 @@
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore Python artifacts from previous version
 instance/
 *.pyc
 __pycache__/
+
+# Ignore local database
+*.db
