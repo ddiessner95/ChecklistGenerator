@@ -1,11 +1,17 @@
 @inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu />
-</div>
+<MudLayout>
+    <MudAppBar Color="Color.Primary">
+        <MudText Typo="Typo.h6">Checklist Generator</MudText>
+    </MudAppBar>
 
-<div class="main">
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+    <MudDrawer Variant="DrawerVariant.Temporary" Open="true">
+        <NavMenu />
+    </MudDrawer>
+
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Small" Class="mt-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>

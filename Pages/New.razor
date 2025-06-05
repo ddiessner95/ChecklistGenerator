@@ -1,18 +1,15 @@
 @page "/new"
 @inject ChecklistService Checklists
 
-<h1>New Checklist</h1>
-<input placeholder="Name" @bind="name" />
-<div>
-    @foreach (var item in items)
-    {
-        <input @bind="item.Text" placeholder="Item" />
-        <br />
-    }
-</div>
-<button @onclick="AddItem">Add Item</button>
-<button @onclick="Save">Save</button>
-<a href="/">Back</a>
+<MudText Typo="Typo.h4" Class="mb-2">New Checklist</MudText>
+<MudTextField @bind-Value="name" Label="Name" Variant="Variant.Filled" Class="mb-3" />
+@foreach (var item in items)
+{
+    <MudTextField @bind-Value="item.Text" Label="Item" Variant="Variant.Filled" Class="mb-2" />
+}
+<MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="AddItem" Class="mt-2 mr-2">Add Item</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Save" Class="mt-2 mr-2">Save</MudButton>
+<MudButton Variant="Variant.Text" Href="/">Back</MudButton>
 
 @code {
     private string name = string.Empty;
