@@ -1,0 +1,33 @@
+@page "/new"
+@inject ChecklistService Checklists
+
+<h1>New Checklist</h1>
+<input placeholder="Name" @bind="name" />
+<div>
+    @foreach (var item in items)
+    {
+        <input @bind="item.Text" placeholder="Item" />
+        <br />
+    }
+</div>
+<button @onclick="AddItem">Add Item</button>
+<button @onclick="Save">Save</button>
+<a href="/">Back</a>
+
+@code {
+    private string name = string.Empty;
+    private List<ChecklistItem> items = new() { new ChecklistItem() };
+
+    void AddItem()
+    {
+        items.Add(new ChecklistItem());
+    }
+
+    async Task Save()
+    {
+        var cl = new Checklist { Name = name, Items = items };
+        await Checklists.AddChecklist(cl);
+        name = string.Empty;
+        items = new() { new ChecklistItem() };
+    }
+}

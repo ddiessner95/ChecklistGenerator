@@ -1,0 +1,42 @@
+@page "/view/{Id:guid}"
+@inject ChecklistService Checklists
+
+<h1>@cl?.Name</h1>
+
+@if (cl == null)
+{
+    <p>Checklist not found.</p>
+    <a href="/">Back</a>
+}
+else
+{
+    <ul>
+    @foreach (var item in cl.Items)
+    {
+        <li>
+            <input type="checkbox" @bind="item.Done" /> @item.Text
+        </li>
+    }
+    </ul>
+    <button @onclick="Save">Save</button>
+    <a href="/">Back</a>
+}
+
+@code {
+    [Parameter] public Guid Id { get; set; }
+    private Checklist? cl;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Checklists.LoadAsync();
+        cl = Checklists.Lists.FirstOrDefault(c => c.Id == Id);
+    }
+
+    async Task Save()
+    {
+        if (cl != null)
+        {
+            await Checklists.UpdateChecklist(cl);
+        }
+    }
+}
