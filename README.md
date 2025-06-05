@@ -15,6 +15,7 @@ dotnet run
 
 The application will be available at `https://localhost:5001/` by default.
 
+
 ## Visual Studio
 
 You can open the project in Visual Studio using the provided solution file:
@@ -29,4 +30,3 @@ You can open the project in Visual Studio using the provided solution file:
 - Delete checklists
 
 All data is persisted locally in your browser so no server setup is required.
-
