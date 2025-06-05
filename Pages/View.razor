@@ -1,25 +1,25 @@
 @page "/view/{Id:guid}"
 @inject ChecklistService Checklists
 
-<h1>@cl?.Name</h1>
+<MudText Typo="Typo.h4" Class="mb-2">@cl?.Name</MudText>
 
 @if (cl == null)
 {
-    <p>Checklist not found.</p>
-    <a href="/">Back</a>
+    <MudText>Checklist not found.</MudText>
+    <MudButton Variant="Variant.Text" Href="/">Back</MudButton>
 }
 else
 {
-    <ul>
+    <MudList Dense="true">
     @foreach (var item in cl.Items)
     {
-        <li>
-            <input type="checkbox" @bind="item.Done" /> @item.Text
-        </li>
+        <MudListItem>
+            <MudCheckBox @bind-Checked="item.Done" Label="@item.Text" />
+        </MudListItem>
     }
-    </ul>
-    <button @onclick="Save">Save</button>
-    <a href="/">Back</a>
+    </MudList>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Save" Class="mt-2 mr-2">Save</MudButton>
+    <MudButton Variant="Variant.Text" Href="/">Back</MudButton>
 }
 
 @code {
