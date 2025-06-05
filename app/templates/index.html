@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Checklists</title>
+</head>
+<body>
+  <h1>Checklists</h1>
+  <a href="{{ url_for('new_checklist') }}">New Checklist</a>
+  <ul>
+    {% for cl in lists %}
+      <li><a href="{{ url_for('view_list', list_id=cl.id) }}">{{ cl.name }}</a>
+      <form action="{{ url_for('delete_list', list_id=cl.id) }}" method="post" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+      </li>
+    {% else %}
+      <li>No checklists yet.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
