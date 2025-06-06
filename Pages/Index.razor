@@ -1,24 +1,24 @@
 @page "/"
 @inject ChecklistService Checklists
 
-<h1>Checklists</h1>
-<a href="/new">Create New</a>
+<MudText Typo="Typo.h4" Class="mb-2">Checklists</MudText>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/new" Class="mb-4">Create New</MudButton>
 
 @if (Checklists.Lists.Count == 0)
 {
-    <p>No checklists yet.</p>
+    <MudText>No checklists yet.</MudText>
 }
 else
 {
-    <ul>
+    <MudList Dense="true">
     @foreach (var cl in Checklists.Lists)
     {
-        <li>
-            <a href="/view/@cl.Id">@cl.Name</a>
-            <button @onclick="() => Delete(cl)">Delete</button>
-        </li>
+        <MudListItem>
+            <MudLink Href="/view/@cl.Id" Class="mr-2">@cl.Name</MudLink>
+            <MudButton Color="Color.Error" Variant="Variant.Text" OnClick="() => Delete(cl)">Delete</MudButton>
+        </MudListItem>
     }
-    </ul>
+    </MudList>
 }
 
 @code {

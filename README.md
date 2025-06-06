@@ -2,6 +2,8 @@
 
 A simple Blazor WebAssembly application to create and manage configurable checklists. All data is stored in the browser's local storage.
 
+The UI is styled using [MudBlazor](https://mudblazor.com/).
+
 ## Setup
 
 You need the [.NET SDK](https://dotnet.microsoft.com/download) to run the app.
